@@ -13,6 +13,11 @@ public class App {
             int  resultado4 = rec.sumaDigitos(456);
             System.out.println("El resultado de la suma de los digitos es: "+resultado4);
 
+            int resultado5 = rec.fibonacci(5);
+            System.out.println("El resultado de la secuencia de fibonacci es: "+resultado5);
+
+            RenombrarDirectorios rd =  new RenombrarDirectorios();
+            rd.RenombrarDirectorios("src/directorios");
 
     }
 }
