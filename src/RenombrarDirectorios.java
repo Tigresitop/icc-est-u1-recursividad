@@ -21,18 +21,19 @@ public class RenombrarDirectorios {
         if(archivosInternos == null){
             return;
         }
-        for(File directorioArchivo :archivosInternos){
+        for(File directorioArchivo : archivosInternos){
             if(directorioArchivo.isDirectory()){ //si es carpeta cambio nombre
                 String nombreCarpeta = directorioArchivo.getName();
-                String nombreNuevo = "Nuevo-" + nombreCarpeta;
-                
-                if(!directorioArchivo.renameTo(new File(directorioArchivo.getParent(), nombreNuevo))){
+                String nombreNuevo = "Prueba-" + nombreCarpeta;
+                File nuevoDirectorio = new File(directorioArchivo.getParent(), nombreNuevo);
+                if (directorioArchivo.renameTo(nuevoDirectorio)) {
+                    System.out.println("Directorio renombrado: " + nombreCarpeta + " -> " + nombreNuevo);
+                    // Llamada recursiva con el nuevo nombre del directorio
+                    RenombrarDirectoriosInternos(nuevoDirectorio);
+                } else {
+                    System.out.println("No se pudo renombrar el directorio: " + nombreCarpeta);
                 }
-                RenombrarDirectoriosInternos (directorioArchivo);
-
-
+            }
         }
     }
-    
-
 }

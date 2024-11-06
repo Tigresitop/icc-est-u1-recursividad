@@ -3,7 +3,7 @@ public class Recursividad {
         System.out.println("Calculando el factorial de: " +n);
         //Caso base = 0! y 1! son iguales a 1
         if (n == 0 || n == 1 ){
-            System.out.println("Cso base alcanzado el factorial de "+n+" es 1");
+            System.out.println("Caso base alcanzado el factorial de "+n+" es 1");
             return 1;
         }
         int resultado = n * factorial(n-1);
@@ -52,7 +52,32 @@ public class Recursividad {
         return fibonacci(n-1)+fibonacci(n-2);
     }
 
-    
+    public int busquedaSecuencialRecursiva (int[] arreglo, int elemento, int posicion){
+        //Caso base
+        if (posicion >=  arreglo.length){
+            return -1;
+            }
+            if (arreglo[posicion] == elemento){
+                return posicion;
+            }
+                return busquedaSecuencialRecursiva(arreglo, elemento, posicion+1);
+    }
+
+    public int  busquedaBinariaRecursiva(int[] arreglo, int elemento, int inicio, int fin){
+        //Caso base
+        if (inicio > fin){
+            return -1;
+        }
+        int medio = (inicio + fin) / 2;
+        if (arreglo[medio] == elemento){
+            return medio;
+        }
+        if (arreglo[medio] < elemento){
+            return busquedaBinariaRecursiva(arreglo, elemento, medio+1, fin);
+        }
+        return  busquedaBinariaRecursiva(arreglo, elemento, inicio, medio-1);
+
+    }
 }
 
 
